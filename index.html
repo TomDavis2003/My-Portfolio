@@ -1,229 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tom Davis | AI Enthusiast</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tom Davis — AI & ML Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --accent:#007bff;
+      --bg:#f4f6f9;
+      --card:#ffffff;
+      --muted:#666;
+      --maxw:1100px;
+      --radius:12px;
+      --glass: rgba(255,255,255,0.6);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Roboto',sans-serif;
+      background:var(--bg);
+      color:#222;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f6f9;
-      color: #333;
-      line-height: 1.6;
-      overflow-x: hidden;
+    header{
+      background:var(--card);
+      box-shadow:0 6px 18px rgba(20,20,30,0.06);
+      padding:18px 28px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo {
+      width:56px;height:56px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#0056b3);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+      font-size:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+    .name{
+      font-size:1.05rem;font-weight:700;color:var(--accent);
+    }
+    .resume-btn{
+      background:var(--accent);
+      color:#fff;
+      padding:10px 16px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 6px 18px rgba(0,123,255,0.12);
+    }
+    .resume-btn:hover{transform:translateY(-2px);transition:all .18s ease}
+
+    .wrap{
+      max-width:var(--maxw);
+      margin:36px auto;
+      padding:18px;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:22px;
     }
 
-    header {
-      background-color: #ffffff;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* left column */
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 6px 18px rgba(20,20,30,0.06);
+      overflow:hidden;
     }
-
-    header .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #007bff;
+    .avatar{
+      width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#0056b3);
+      color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;
     }
+    .muted{color:var(--muted);font-size:0.95rem}
+    .contact a{color:var(--accent);text-decoration:none;font-weight:600}
+    .contact p{margin:8px 0;font-size:0.98rem}
 
-    .resume-btn {
-      background-color: #007bff;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 30px;
-      font-size: 16px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:#f1f6ff;color:var(--accent);font-weight:600;margin:6px 6px 6px 0;font-size:0.9rem}
 
-    .resume-btn:hover {
-      background-color: #0056b3;
-    }
+    .section-title{font-size:1.05rem;color:var(--accent);font-weight:700;margin:12px 0 8px}
+    .list{margin-top:8px}
+    .list li{margin:8px 0;color:#444;font-size:0.98rem}
 
-    .container {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
+    /* right column */
+    .headline{background:linear-gradient(90deg,rgba(0,123,255,0.05),transparent);padding:18px;border-radius:10px;margin-bottom:12px}
+    .headline h1{font-size:1.6rem;margin-bottom:8px}
+    .headline p{color:var(--muted)}
 
-    h1 {
-      font-size: 3rem;
-      color: #333;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
+    .block{background:var(--card);border-radius:10px;padding:16px;margin-bottom:14px;box-shadow:0 6px 18px rgba(20,20,30,0.04)}
+    .job-title{font-weight:700;color:#111}
+    .job-meta{font-size:0.95rem;color:var(--muted);margin:6px 0 12px}
+    .bullets{margin-left:14px;margin-top:8px}
+    .bullets li{margin:8px 0;color:#333}
+    .project-link{color:var(--accent);text-decoration:none;font-weight:600}
 
-    h2 {
-      font-size: 2rem;
-      color: #007bff;
-      margin-top: 30px;
-      font-weight: 500;
-    }
+    footer{max-width:var(--maxw);margin:18px auto 36px;text-align:center;color:var(--muted);font-size:0.95rem}
 
-    p {
-      font-size: 1.1rem;
-      margin-top: 15px;
-      color: #555;
-      line-height: 1.8;
-    }
-
-    ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
-    ul li {
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-      color: #555;
-    }
-
-    .project, .experience-item {
-      background-color: #ffffff;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .project:hover, .experience-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .project a {
-      color: #007bff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .project a:hover {
-      text-decoration: underline;
-    }
-
-    .social a {
-      margin-right: 20px;
-      font-size: 1.3rem;
-      color: #007bff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .social a:hover {
-      color: #0056b3;
-    }
-
-    footer {
-      background-color: #f1f1f1;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
-    footer a {
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 2.4rem;
-      }
-
-      h2 {
-        font-size: 1.8rem;
-      }
-
-      .resume-btn {
-        font-size: 14px;
-        padding: 10px 15px;
-      }
+    /* responsive */
+    @media (max-width:900px){
+      .wrap{grid-template-columns:1fr; padding:12px}
+      header{padding:12px}
+      .logo{width:48px;height:48px}
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">Tom Davis</div>
-    <a class="resume-btn" href="TOM_DAVIS_RESUME.pdf" download>Download Resume</a>
+    <div class="brand">
+      <div class="logo">TD</div>
+      <div>
+        <div class="name">Tom Davis</div>
+        <div style="font-size:0.86rem;color:var(--muted)">B.Tech (CSE - AI) • AI & Machine Learning</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;align-items:center">
+      <a class="resume-btn" href="TOM_DAVIS_TECHNICAL_EXECUTIVE.pdf" download aria-label="Download resume">Download Resume</a>
+      <a class="resume-btn" href="mailto:tomdavisparackal2003@gmail.com" style="background:#e9f6ff;color:var(--accent);box-shadow:none">Contact</a>
+    </div>
   </header>
 
-  <div class="container">
-    <h1>Hi, I'm Tom Davis</h1>
-    <h2>AI & Machine Learning Enthusiast</h2>
-    <p>
-      I am a final-year B.Tech student specializing in Computer Science Engineering (AI) at ASIET, Kalady. I am passionate about solving real-world problems using AI/ML technologies and delivering intelligent solutions.
-    </p>
+  <main class="wrap">
 
-    <h2>Skills</h2>
-    <ul>
-      <li>Python, C</li>
-      <li>Machine Learning & AI Algorithms</li>
-      <li>Deep Learning, Explainable AI</li>
-      <li>Strong Communication & Problem-Solving</li>
-    </ul>
+    <!-- LEFT: profile, contact, skills -->
+    <aside class="card">
+      <div style="display:flex;gap:14px;align-items:center">
+        <div class="avatar">TD</div>
+        <div>
+          <div style="font-weight:700;font-size:1.05rem">Tom Davis</div>
+          <div class="muted" style="margin-top:6px;font-size:0.95rem">AI & Machine Learning • Final year B.Tech (AI)</div>
+          <div style="margin-top:8px"><span class="chip">Python</span><span class="chip">Machine Learning</span></div>
+        </div>
+      </div>
 
-    <h2>Experience</h2>
-    <div class="experience-item">
-      <strong>Technical Executive - Business Development</strong><br/>
-      Loanitol, Palarivattom | May 2025 – Present<br/>
-      Develops and maintains automated processes to improve efficiency, accuracy, and productivity.<br/>
-      Combines technical expertise with business acumen to drive growth and revenue for the company.
-    </div>
-    
-    <h2>Projects</h2>
-    <div class="project">
-      <strong>Leaf Disease Detection</strong><br/>
-      CNN-based model with 91% accuracy for real-time leaf disease detection. <br/>
-      <em>Tools: Python, ML, Data Augmentation</em>
-    </div>
+      <div style="margin-top:12px" class="contact">
+        <p><strong class="muted">Email</strong><br/><a href="mailto:tomdavisparackal2003@gmail.com">tomdavisparackal2003@gmail.com</a></p>
+        <p><strong class="muted">Phone</strong><br/><a href="tel:+919446610602">+91 94466 10602</a></p>
+        <p><strong class="muted">Links</strong><br/>
+          <a href="https://www.linkedin.com/in/tomdavis011" target="_blank" rel="noopener">LinkedIn</a> •
+          <a href="https://github.com/TomDavis2003" target="_blank" rel="noopener">GitHub</a>
+        </p>
+      </div>
 
-    <div class="project">
-      <strong>Kidney Transplantation using Explainable AI</strong><br/>
-      Published in IEEE Xplore. Predicted graft survival with Random Forest, SHAP for interpretability. <br/>
-      <a href="https://ieeexplore.ieee.org/document/10845738" target="_blank">View Publication</a>
-    </div>
+      <div class="section-title">Skills</div>
+      <ul class="list">
+        <li>Python (data & ML stack), C, HTML/CSS/JS</li>
+        <li>Machine Learning, Deep Learning, XAI (SHAP)</li>
+        <li>AWS basics (EC2, S3, IAM) — production support</li>
+        <li>OOP, data preprocessing, model evaluation, automation scripting</li>
+      </ul>
 
-    <div class="project">
-      <strong>Prompt Injection Attack Detection System</strong><br/>
-      Detecting prompt injection using LSTM + SHAP explanations. <br/>
-      <em>Final Year project (2024–25)</em>
-    </div>
+      <div class="section-title">Certifications & Learning</div>
+      <ul class="list">
+        <li>Generative AI — 30 hour course certification</li>
+        <li>Fundamentals of AI (NPTEL)</li>
+        <li>AI Foundation — Infosys Springboard</li>
+        <li>Minor Degree in Robotics & Automation</li>
+      </ul>
 
+      <div class="section-title">Honors & Activities</div>
+      <ul class="list">
+        <li>Paper published at 11th ICACC (IEEE).</li>
+        <li>Co-author at ICTEST25; Presented research at academic venues.</li>
+        <li>Campus Head — Game Development Club; Treasurer AI Club; NSS Volunteer.</li>
+      </ul>
+    </aside>
 
-    <h2>Contact</h2>
-    <p>
-      📧 <a href="mailto:tomdavisparackal2003@gmail.com">tomdavisparackal2003@gmail.com</a><br/>
-      📞 <a href="tel:+919446610602">+91 94466 10602</a>
-    </p>
+    <!-- RIGHT: Summary, Education, Experience, Projects -->
+    <section>
+      <div class="headline">
+        <h1>Professional summary</h1>
+        <p class="muted">
+          Final-year B.Tech (CSE — AI) at Adi Shankara Institute of Engineering & Technology, Kalady. Skilled in Python, AWS, AI/ML with hands-on experience building productivity-enhancing software and production support automation. Seeking roles where I can apply ML and engineering skills to deliver impactful solutions.
+        </p>
+      </div>
 
-    <div class="social">
-      <a href="https://www.linkedin.com/in/tomdavis011" target="_blank" title="LinkedIn">LinkedIn</a>
-      <a href="https://github.com/TomDavis2003" target="_blank" title="GitHub">GitHub</a>
-    </div>
-  </div>
+      <div class="block">
+        <div class="job-title">Education</div>
+        <div class="job-meta">B.Tech — Computer Science (Artificial Intelligence), ASIET, Kalady • Nov 2021 – May 2025</div>
+        <ul class="bullets">
+          <li>Minor in Robotics & Automation; relevant coursework: ML, Deep Learning, Robotics.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="job-title">Work experience</div>
+        <div class="job-meta">Technical Executive — Product Development, Loanitol, Palarivattom • May 2025 – Present</div>
+        <ul class="bullets">
+          <li>Own L2/L3 support for Python finance tools: reproduce issues, deliver fixes or workarounds, and coordinate patches with engineering and external IT.</li>
+          <li>Write automated triage scripts and regression checks to speed root-cause analysis and prevent repeat incidents.</li>
+          <li>Build and maintain internal knowledge/onboarding site (HTML/CSS/JS) to shorten ramp-up time for new hires.</li>
+          <li>Manage AWS production resources (EC2, S3, IAM): provisioning, access, monitoring basics, and hands-on incident triage and deployments.</li>
+          <li>Lead incident response — maintain runbooks, run RCAs, and push preventive changes to reduce recurrence.</li>
+          <li>Mentor junior engineers and coordinate with PMs, QA, vendors to ensure SLAs are met.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="job-title">Selected projects</div>
+
+        <div style="margin-top:10px">
+          <strong>Kidney Transplantation using Explainable AI</strong> <span style="color:var(--muted);font-size:0.95rem"> (May 2024 — Aug 2024)</span><br/>
+          <em class="muted">Published in IEEE Xplore.</em>
+          <p style="margin-top:8px">
+            Built predictive models (Random Forest, Gradient Boosting) to estimate graft survival and complication risk. Integrated SHAP for model explainability to identify factors affecting predictions. Presented results at 11th ICACC; paper available on IEEE Xplore.
+          </p>
+          <p style="margin-top:6px"><strong>Tools:</strong> Python, Jupyter, Random Forest, Gradient Boosting, SHAP (XAI).<br/>
+          <a class="project-link" href="https://ieeexplore.ieee.org/document/10845738" target="_blank" rel="noopener">View publication on IEEE Xplore</a></p>
+        </div>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid #f0f0f0" />
+
+        <div>
+          <strong>Leaf Disease Detection</strong> <span style="color:var(--muted);font-size:0.95rem"> (Feb 2024 — May 2024)</span><br/>
+          <p style="margin-top:8px">Developed a CNN-based model achieving ~91% accuracy for real-time leaf disease detection. Improved performance through preprocessing and data augmentation on diverse leaf images.</p>
+          <p style="margin-top:6px"><strong>Tools:</strong> Python, Keras/TensorFlow, Data Augmentation.</p>
+        </div>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid #f0f0f0" />
+
+        <div>
+          <strong>Prompt Injection Attack Detection System</strong> <span style="color:var(--muted);font-size:0.95rem"> (Jul 2024 — Apr 2025)</span><br/>
+          <p style="margin-top:8px">Designed an LSTM-based system to detect prompt-injection attacks in sequential text inputs. Added SHAP explainability to highlight tokens contributing to detection, improving transparency in LLM interactions.</p>
+          <p style="margin-top:6px"><strong>Tools:</strong> Python, LSTM, SHAP, model interpretability.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="job-title">Internships & Other Experience</div>
+        <ul class="bullets">
+          <li>Internship — Cybersecurity & Ethical Hacking at FACEIN Ltd (Internship certification).</li>
+          <li>Participated at National Entrepreneurship Conclave 2.0 (NEC2.0) & Entrepreneurship Bootcamp.</li>
+          <li>Campus Head — Game Development Club; Coordinator for campus events (Brahma'24, Brahma'25, Prayag).</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="job-title">Certifications & Courses</div>
+        <ul class="bullets">
+          <li>Generative AI — 30 hour course</li>
+          <li>Fundamentals of AI (NPTEL)</li>
+          <li>AI Foundation & AI Primer — Infosys Springboard</li>
+          <li>Wheeled Mobile Robotics (NPTEL)</li>
+        </ul>
+      </div>
+
+    </section>
+  </main>
 
   <footer>
-    © 2025 Tom Davis. All rights reserved. | <a href="mailto:tomdavisparackal2003@gmail.com">Contact</a>
+    © 2025 Tom Davis • <a href="mailto:tomdavisparackal2003@gmail.com">Contact</a> • <a href="https://www.linkedin.com/in/tomdavis011" target="_blank" rel="noopener">LinkedIn</a>
   </footer>
 
 </body>
